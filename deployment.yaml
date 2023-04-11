@@ -1,0 +1,20 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: myapi
+spec:
+  selector:
+    matchLabels:
+      app: myapi
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: myapi
+    spec:
+      containers:
+      - name: myapi
+        image: myapi:latest
+        imagePullPolicy: Never
+        ports:
+        - containerPort: 80
