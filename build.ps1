@@ -1,14 +1,14 @@
-# point shell to minikube's docker-daemon
+Write-Host "1. Connect to minikube docker env..." -ForegroundColor Green
 minikube -p minikube docker-env --shell powershell | Invoke-Expression
 
-# build docker image 
+Write-Host "2. Building docker image..." -ForegroundColor Green
 docker build .\MyApi -t myapi:latest -f MyApi/Dockerfile
 
-# create deployment
+Write-Host "3. Creating deployment..." -ForegroundColor Green
 kubectl apply -f deployment.yaml
 
-# create service exposing api
+Write-Host "4. Creating service to expose API..." -ForegroundColor Green
 kubectl apply -f service.yaml
 
-# create tunnel for service
+Write-Host "5. Starting tunnel to service..." -ForegroundColor Green
 minikube service myapi 
